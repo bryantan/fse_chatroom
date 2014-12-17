@@ -29,8 +29,12 @@
   <div id="messages">
     <p>
       {{#each messages}}
-        <strong>{{name}} ({{formatted_time}}):</strong> {{message}}<br />
+        {{> message}}
       {{/each}}
     </p>
   </div>
+</template>
+
+<template name="message">
+  <strong>{{name}} ({{formatted_time}}):</strong> {{message}}<br />
 </template>

@@ -1,17 +1,22 @@
 Messages = new Meteor.Collection('messages');
 
 if (Meteor.isClient) {
-  Template.messages.rendered = function() {
-    console.log('ready');
-    $('#messages').scrollTop($('#messages')[0].scrollHeight);
-  }
+  Template.message.rendered = function() {
+    console.log("scrolltop is " + $('#messages').scrollTop() + ", scrollHeight is " + $('#messages').prop("scrollHeight"));
+    //$('#messages').scrollTop($('#messages')[0].scrollHeight);
+    $('#messages').scrollTop( $('#messages').prop("scrollHeight"));
+    console.log("scrolltop is " + $('#messages').scrollTop());
+  };
+
+  Template.message.helpers({
+    formatted_time: function() {
+      return moment(this.time).fromNow();
+    }
+  });
 
   Template.messages.helpers({
     messages: function() {
       return Messages.find({}, { sort: { time: 1 }});
-    },
-    formatted_time: function() {
-      return moment(this.time).fromNow();
     }
   });
 
