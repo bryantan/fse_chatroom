@@ -2,10 +2,7 @@ Messages = new Meteor.Collection('messages');
 
 if (Meteor.isClient) {
   Template.message.rendered = function() {
-    console.log("scrolltop is " + $('#messages').scrollTop() + ", scrollHeight is " + $('#messages').prop("scrollHeight"));
-    //$('#messages').scrollTop($('#messages')[0].scrollHeight);
-    $('#messages').scrollTop( $('#messages').prop("scrollHeight"));
-    console.log("scrolltop is " + $('#messages').scrollTop());
+    $('#messages').scrollTop($('#messages').prop("scrollHeight"));
   };
 
   Template.message.helpers({
@@ -24,7 +21,6 @@ if (Meteor.isClient) {
     "keydown #message": function(event) {
       // detect press of enter key
       if(event.which == 13) {
-        // Submit the form
         var name = $('#name');
         var message = $('#message');
 
