@@ -1,0 +1,36 @@
+<head>
+  <title>FSE Chat Room</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="container">
+        <h1>FSE Chat Room</h1>
+        <br />
+
+        {{> namefield}}
+        {{> messages}}
+        {{> inputfield}}
+      </div>
+    </div>
+  </div>  
+</body>
+
+<template name="namefield">
+  <input type="text" id="name" placeholder="Name" />
+</template>
+
+<template name="inputfield">
+  <input type="text" id="message" placeholder="Message" />
+</template>
+
+<template name="messages">
+  <div id="messages">
+    <p>
+      {{#each messages}}
+        <strong>{{name}} ({{formatted_time}}):</strong> {{message}}<br />
+      {{/each}}
+    </p>
+  </div>
+</template>
