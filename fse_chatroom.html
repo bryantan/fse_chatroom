@@ -1,5 +1,5 @@
 <head>
-  <title>FSE Chat Room</title>
+  <title>FSE Chatroom</title>
 </head>
 
 <body>
@@ -9,20 +9,33 @@
         <h1>FSE Chat Room</h1>
         <br />
 
-        {{> namefield}}
-        {{> messages}}
-        {{> inputfield}}
+        {{> page_body}}
       </div>
     </div>
   </div>  
 </body>
 
-<template name="namefield">
-  <input type="text" id="name" placeholder="Name" />
+<template name="page_body">
+  {{#if in_chatroom}}
+    {{> namedisplay}}
+    {{> messages}}
+    {{> inputfield}}
+    {{> leavebutton}}
+  {{else}}
+    {{> namefield}}
+  {{/if}}
+</template>
+
+<template name="namedisplay">
+  <h4>Entered as {{name}}</h4>
 </template>
 
 <template name="inputfield">
   <input type="text" id="message" placeholder="Message" />
+</template>
+
+<template name="leavebutton">
+  <button type="button" class="btn btn-default" id="leave">Leave Chatroom</button>
 </template>
 
 <template name="messages">
@@ -37,4 +50,9 @@
 
 <template name="message">
   <strong>{{name}} ({{formatted_time}}):</strong> {{message}}<br />
+</template>
+
+<template name="namefield">
+  <h4>Please enter a name before entering the chatroom.</h4>
+  <input type="text" id="name" placeholder="Name" />
 </template>
