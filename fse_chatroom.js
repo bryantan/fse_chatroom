@@ -74,7 +74,7 @@ if (Meteor.isClient) {
 
   Template.leavebutton.events = {
     'click #leave': function(event) {
-      username_dep.depend();
+      username_dep.changed();
       username = '';
     }
   }
